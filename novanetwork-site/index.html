@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1630" />
+  <title>NovaNetwork SMP • Minecraft Java Server</title>
+
+  <meta name="description" content="NovaNetwork SMP — Minecraft Java Edition SMP. Join with play.novanetsmp.site (1.8–1.21.x) and connect on Discord." />
+  <link rel="canonical" href="https://novanetsmp.site/" />
+
+  <link rel="icon" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
+  <meta property="og:title" content="NovaNetwork SMP" />
+  <meta property="og:description" content="Minecraft Java SMP • IP: play.novanetsmp.site • Supports 1.8–1.21.x" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://novanetsmp.site/" />
+  <meta property="og:image" content="https://novanetsmp.site/assets/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Rubik:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Top accent bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="pill pill--gold">Java Only</span>
+        <span class="pill">Supports <strong>1.8–1.21.x</strong></span>
+      </div>
+      <div class="topbar__right">
+        <a class="topbar__link" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Discord</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#">
+        <img class="brand__logo" src="/assets/logo.png" alt="NovaNetwork logo" />
+        <div class="brand__text">
+          <div class="brand__name">NovaNetwork</div>
+          <div class="brand__tag muted">Minecraft SMP Network</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#join">Join</a>
+        <a href="#status">Status</a>
+        <a href="#rules">Rules</a>
+        <a class="btn btn--small btn--discord" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Discord</a>
+      </nav>
+
+      <button class="menuBtn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobileNav" id="mobileNav" hidden>
+      <div class="container mobileNav__inner">
+        <a class="mobileNav__link" href="#about">About</a>
+        <a class="mobileNav__link" href="#join">Join</a>
+        <a class="mobileNav__link" href="#status">Status</a>
+        <a class="mobileNav__link" href="#rules">Rules</a>
+        <a class="btn btn--primary" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Join Discord</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__left">
+          <div class="hero__badge">
+            <span class="badgeDot" aria-hidden="true"></span>
+            <span>Minecraft Java SMP</span>
+            <span class="sep" aria-hidden="true">•</span>
+            <span class="muted">1.8–1.21.x</span>
+          </div>
+
+          <h1>Play NovaNetwork SMP</h1>
+          <p class="lead">
+            A clean, community-first SMP focused on long-term survival, big builds, trading, and good vibes.
+          </p>
+
+          <div class="hero__cta">
+            <button class="btn btn--primary" id="copyIpBtn" data-ip="play.novanetsmp.site">
+              Copy IP <span class="btn__meta mono">play.novanetsmp.site</span>
+            </button>
+            <a class="btn btn--ghost" href="#join">How to Join</a>
+          </div>
+
+          <div class="quick">
+            <div class="quick__card">
+              <div class="quick__k">Server</div>
+              <div class="quick__v mono">play.novanetsmp.site</div>
+            </div>
+            <div class="quick__card">
+              <div class="quick__k">Status</div>
+              <div class="quick__v" id="statusText">Checking…</div>
+            </div>
+            <div class="quick__card">
+              <div class="quick__k">Players</div>
+              <div class="quick__v" id="playersText">—</div>
+            </div>
+          </div>
+
+          <div class="hint muted">
+            Tip: Minecraft → Multiplayer → Add Server → <span class="mono">play.novanetsmp.site</span>
+          </div>
+        </div>
+
+        <aside class="hero__right">
+          <div class="panel">
+            <div class="panel__head">
+              <div>
+                <div class="panel__title">Server Info</div>
+                <div class="panel__sub muted">Live status + details</div>
+              </div>
+              <button class="btn btn--small btn--ghost" id="refreshStatusBtn">Refresh</button>
+            </div>
+
+            <div class="panel__grid">
+              <div class="kv">
+                <div class="kv__k muted">Edition</div>
+                <div class="kv__v">Java</div>
+              </div>
+              <div class="kv">
+                <div class="kv__k muted">Supported</div>
+                <div class="kv__v">1.8–1.21.x</div>
+              </div>
+              <div class="kv">
+                <div class="kv__k muted">Version</div>
+                <div class="kv__v" id="versionText">—</div>
+              </div>
+              <div class="kv">
+                <div class="kv__k muted">Players</div>
+                <div class="kv__v" id="playersTextBig">—</div>
+              </div>
+              <div class="kv kv--full">
+                <div class="kv__k muted">MOTD</div>
+                <div class="kv__v" id="motdText">—</div>
+              </div>
+            </div>
+
+            <div class="panel__foot">
+              <a class="link" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Join Discord</a>
+              <span class="sep muted">•</span>
+              <a class="link" href="#rules">Rules</a>
+              <span class="sep muted">•</span>
+              <a class="link" href="#status">More Status</a>
+            </div>
+          </div>
+
+          <div class="sideCTA">
+            <div class="sideCTA__text">
+              <div class="sideCTA__title">Want updates & events?</div>
+              <div class="muted">All announcements are posted in Discord.</div>
+            </div>
+            <a class="btn btn--discord" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Open Discord</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero__bg" aria-hidden="true"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Why NovaNetwork?</h2>
+          <p class="muted">A professional SMP feel without the chaos. Simple, fair, and fun.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__title">Community-first</div>
+            <p class="muted">Meet players, team up on builds, and stay connected through Discord updates.</p>
+          </article>
+          <article class="card">
+            <div class="card__title">Fair gameplay</div>
+            <p class="muted">No cheating, no griefing, no drama. Progress actually matters here.</p>
+          </article>
+          <article class="card">
+            <div class="card__title">Supports 1.8–1.21.x</div>
+            <p class="muted">Join from old to new versions (Java Edition) and play with friends easily.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section id="join" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <h2>How to Join</h2>
+          <p class="muted">Java Edition only • IP is below • Supports 1.8–1.21.x</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <div>
+              <div class="step__title">Open Minecraft: Java Edition</div>
+              <div class="muted">Make sure you’re launching Java, not Bedrock.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__num">2</div>
+            <div>
+              <div class="step__title">Add the server</div>
+              <div class="muted">Multiplayer → Add Server → Address: <span class="mono">play.novanetsmp.site</span></div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__num">3</div>
+            <div>
+              <div class="step__title">Join Discord (recommended)</div>
+              <div class="muted">Rules, announcements, events: <a class="link" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">discord.gg/8hWQF6s4S</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="joinBar">
+          <div>
+            <div class="joinBar__k muted">Server IP</div>
+            <div class="joinBar__v mono">play.novanetsmp.site</div>
+            <div class="joinBar__s muted small">Supported versions: 1.8–1.21.x</div>
+          </div>
+          <div class="joinBar__actions">
+            <button class="btn btn--primary" id="copyIpBtn2" data-ip="play.novanetsmp.site">Copy IP</button>
+            <a class="btn btn--discord" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Discord</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Server Status</h2>
+          <p class="muted">Live check for <span class="mono">play.novanetsmp.site</span></p>
+        </div>
+
+        <div class="statusGrid">
+          <div class="statusCard">
+            <div class="statusRow">
+              <span class="muted">Status</span>
+              <strong id="statusTextBig">Checking…</strong>
+            </div>
+            <div class="statusRow">
+              <span class="muted">Players</span>
+              <strong id="playersTextBig2">—</strong>
+            </div>
+            <div class="statusRow">
+              <span class="muted">Version</span>
+              <strong id="versionText2">—</strong>
+            </div>
+            <div class="statusRow">
+              <span class="muted">MOTD</span>
+              <strong class="statusMotd" id="motdText2">—</strong>
+            </div>
+            <div class="statusActions">
+              <button class="btn btn--ghost" id="refreshStatusBtn2">Refresh</button>
+              <button class="btn btn--primary" data-ip="play.novanetsmp.site" id="copyIpBtn3">Copy IP</button>
+            </div>
+          </div>
+
+          <div class="statusCard statusCard--cta">
+            <div class="statusCard__title">Join the community</div>
+            <p class="muted">Need help, want events, or looking for teammates? Discord is the hub.</p>
+            <a class="btn btn--discord" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Join Discord</a>
+            <p class="muted small">Not affiliated with Hypixel. Theme is original, inspired by classic Minecraft network styling.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section id="rules" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <h2>Rules</h2>
+          <p class="muted">Keep it simple. Full details can live on Discord.</p>
+        </div>
+
+        <div class="rulesCard">
+          <ul class="rulesList">
+            <li><strong>No griefing or stealing.</strong> Respect builds, chests, and player property.</li>
+            <li><strong>No cheating.</strong> No hacked clients, x-ray, dupes, or exploit abuse.</li>
+            <li><strong>Be respectful.</strong> No harassment, hate speech, or threats.</li>
+            <li><strong>Use common sense.</strong> Staff decisions are final for keeping the server healthy.</li>
+          </ul>
+
+          <div class="rulesCta">
+            <a class="btn btn--primary" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Read full rules on Discord</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="finalCta">
+          <div>
+            <h2 class="finalCta__h">Ready to hop in?</h2>
+            <p class="muted">Copy the IP and join NovaNetwork SMP on Java (1.8–1.21.x).</p>
+          </div>
+          <div class="finalCta__actions">
+            <button class="btn btn--primary" id="copyIpBtn4" data-ip="play.novanetsmp.site">Copy IP</button>
+            <a class="btn btn--discord" href="https://discord.gg/8hWQF6s4S" target="_blank" rel="noreferrer">Discord</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="muted small">© <span id="year"></span> NovaNetwork • <span class="mono">novanetsmp.site</span></div>
+      <div class="footer__links">
+        <a class="link" href="#about">About</a>
+        <a class="link" href="#join">Join</a>
+        <a class="link" href="#status">Status</a>
+        <a class="link" href="#rules">Rules</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
